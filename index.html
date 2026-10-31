@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寵物日常管理系統</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 載入 SQLite 引擎 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>🐾 寵物日常管理系統</h1>
+        <p>Pet Daily Management System</p>
+    </header>
+
+    <main>
+
+        <section class="query-section">
+            <h2>SQL 查詢操作</h2>
+
+            <p>請在下方輸入 SQL 語法：</p>
+
+            
+<textarea id="sqlInput" placeholder="SELECT * FROM Pets;"></textarea>
+
+<!-- 常用 SQL 範例 -->
+<div class="query-examples">
+    <p>常用查詢範例：</p>
+
+    <button class="example-button"
+        data-query="SELECT * FROM Pets;">
+        查詢所有寵物
+    </button>
+
+    <button class="example-button"
+        data-query="SELECT Pets.name AS 寵物名稱, Owners.name AS 飼主姓名 FROM Pets JOIN Owners ON Pets.owner_id = Owners.owner_id;">
+        查詢寵物與飼主
+    </button>
+
+    <button class="example-button"
+        data-query="SELECT species AS 寵物種類, COUNT(*) AS 寵物數量 FROM Pets GROUP BY species;">
+        統計寵物種類
+    </button>
+
+    <button class="example-button"
+        data-query="SELECT * FROM WeightRecords;">
+        查詢體重紀錄
+    </button>
+</div>
+
+<button id="runButton">執行 SQL</button>
+
+        </section>
+
+        <section class="result-section">
+            <h2>查詢結果</h2>
+
+            <div id="result">
+                <p>等待執行 SQL 查詢...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>寵物日常管理系統 © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
